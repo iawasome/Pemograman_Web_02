@@ -22,4 +22,8 @@ class Pasien extends Model
         'email',
         'alamat',
     ];
+
+    public $timestamp = false;
 }
+
+

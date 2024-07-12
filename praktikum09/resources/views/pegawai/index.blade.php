@@ -1,5 +1,5 @@
-@include('pegawai.header')
-@include('pegawai.sidebar')
+@include('admin.header')
+@include('admin.sidebar')
 <div class="container-fluid px-4">
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -87,4 +87,4 @@
     <!-- /.content-wrapper -->
 </div>
 
-@include('pegawai.footer')
+@include('admin.footer')

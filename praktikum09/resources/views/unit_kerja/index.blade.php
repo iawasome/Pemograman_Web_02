@@ -1,5 +1,5 @@
-@include('unit_kerja.header')
-@include('unit_kerja.sidebar')
+@include('admin.header')
+@include('admin.sidebar')
 
 <div class="container-fluid px-4">
     <!-- Content Wrapper. Contains page content -->
@@ -73,4 +73,4 @@
     <!-- /.content-wrapper -->
 </div>
 
-@include('unit_kerja.footer')
+@include('admin.footer')

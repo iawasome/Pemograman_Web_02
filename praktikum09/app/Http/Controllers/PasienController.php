@@ -22,7 +22,7 @@ class PasienController extends Controller
      */
     public function create()
     {
-        //
+        return view('pasien.create');
     }
 
     /**
@@ -30,7 +30,26 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kode' => 'required|string',
+            'nama' => 'required|string',
+            'tmp_lahir' => 'required|string',
+            'tgl_lahir' => 'required|date',
+            'gender' => 'required|string',
+            'email' => 'required|string',
+            'alamat' => 'required|string',
+        ]);
+        Pasien::create([
+            'kode' => $request->kode,
+            'nama' => $request->nama,
+            'tmp_lahir' => $request->tmp_lahir, 
+            'tgl_lahir' => $request->tgl_lahir,
+            'gender' => $request->gender,
+            'email' => $request->email,
+            'alamat' => $request->alamat,
+        ]);
+
+        return redirect()->route('pasiens.index')->with('success', 'Pasien created successfully.');
     }
 
     /**
@@ -38,7 +57,7 @@ class PasienController extends Controller
      */
     public function show(Pasien $pasien)
     {
-        //
+        return view('pasien.show', compact('pasien'));
     }
 
     /**
@@ -46,7 +65,8 @@ class PasienController extends Controller
      */
     public function edit(Pasien $pasien)
     {
-        //
+        // Pass the Pasien instance to the view
+        return view('pasien.edit', compact('pasien'));
     }
 
     /**
@@ -54,7 +74,12 @@ class PasienController extends Controller
      */
     public function update(Request $request, Pasien $pasien)
     {
-        //
+
+        // Update the Pasien instance
+        $pasien->update($request->all());
+
+        // Redirect to the index page with a success message
+        return redirect()->route('pasiens.index')->with('success', 'Pasien updated successfully');
     }
 
     /**
@@ -62,6 +87,10 @@ class PasienController extends Controller
      */
     public function destroy(Pasien $pasien)
     {
-        //
+        // Delete the Pasien instance
+        $pasien->delete();
+
+        // Redirect back to the index page with a success message
+        return redirect()->route('pasiens.index')->with('success', 'Pasien deleted successfully');
     }
 }
